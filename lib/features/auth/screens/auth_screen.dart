@@ -2,6 +2,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class AuthScreen extends StatefulWidget {
+  static const String routeName = '/auth-screen';
   const AuthScreen({super.key});
 
   @override

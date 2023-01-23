@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_e_com/constants/global_variables.dart';
+import 'package:my_e_com/features/auth/screens/auth_screen.dart';
+import 'package:my_e_com/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,14 +25,8 @@ class MyApp extends StatelessWidget {
               color: Colors.black,
             ),
           )),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Hello'),
-        ),
-        body: const Center(
-          child: Text('Flutter Demo Home Page'),
-        ),
-      ),
+      onGenerateRoute: (settings) => generateRoute(settings),
+      home: const AuthScreen(),
     );
   }
 }
