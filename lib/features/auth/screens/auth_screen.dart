@@ -37,10 +37,12 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: GlobalVariables.greyBackgroundCOlor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
                 "Welcome",
@@ -50,6 +52,9 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
               ListTile(
+                tileColor: _auth == Auth.signup
+                    ? GlobalVariables.backgroundColor
+                    : GlobalVariables.greyBackgroundCOlor,
                 title: const Text(
                   'Create Account',
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -93,7 +98,33 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                   ),
                 ),
+              if (_auth == Auth.signin)
+                Container(
+                  padding: const EdgeInsets.all(8.0),
+                  color: GlobalVariables.backgroundColor,
+                  child: Form(
+                    key: _signInFormKey,
+                    child: Column(
+                      children: [
+                        CustomTextField(
+                          controller: _emailController,
+                          hintText: 'Email',
+                        ),
+                        const SizedBox(height: 10),
+                        CustomTextField(
+                          controller: _passwordController,
+                          hintText: 'Password',
+                        ),
+                        const SizedBox(height: 10),
+                        CustomButton(text: 'Sign In', onTap: () {})
+                      ],
+                    ),
+                  ),
+                ),
               ListTile(
+                tileColor: _auth == Auth.signin
+                    ? GlobalVariables.backgroundColor
+                    : GlobalVariables.greyBackgroundCOlor,
                 title: const Text(
                   'Sign-In',
                   style: TextStyle(fontWeight: FontWeight.bold),
