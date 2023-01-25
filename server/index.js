@@ -13,7 +13,9 @@ const username = process.env.MONGO_USERNAME;
 const password = process.env.MONGO_PASSWORD;
 const DB = `mongodb+srv://${username}:${password}@cluster0.hu7ex4c.mongodb.net/?retryWrites=true&w=majority`;
 console.log(username, password);
+
 // MIDDLEWARES
+app.use(express.json());
 app.use(authRouter);
 
 // CONNECTIONS
