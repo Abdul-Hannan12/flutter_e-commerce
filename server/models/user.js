@@ -5,6 +5,14 @@ const userSchema = mongoose.Schema({
     required: true,
     type: String,
     trim: true,
+    validate: {
+      validator: (value) => {
+        const regex = /^[a-zA-Z][a-zA-Z ]{0,23}[a-zA-Z]$/;
+        return value.match(regex);
+      },
+      message:
+        "Name is not valid. It should start and end with an uppercase or lowercase letter and contain only letters and spaces and be between 3 and 16 characters long.",
+    },
   },
   email: {
     required: true,
