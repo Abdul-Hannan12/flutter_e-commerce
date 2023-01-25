@@ -12,9 +12,9 @@ const userSchema = mongoose.Schema({
     trim: true,
     validate: {
       validator: (value) => {
-        const re =
+        const regex =
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return value.match(re);
+        return value.match(regex);
       },
       message: "Please enter a valid email address",
     },
@@ -24,9 +24,11 @@ const userSchema = mongoose.Schema({
     type: String,
     validate: {
       validator: (value) => {
-        return value.length > 6;
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        return value.match(regex);
       },
-      message: "Password too short",
+      message:
+        "Password must contain at least one uppercase letter, one lowercase letter, one digit, and have minimum 8 characters.",
     },
   },
   address: {
