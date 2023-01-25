@@ -1,6 +1,7 @@
 // IMPORTS FROM PACKAGES
 const express = require("express");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 // IMPORTS FROM FILES
 const authRouter = require("./routes/auth");
@@ -8,9 +9,10 @@ const authRouter = require("./routes/auth");
 // INITIALIZATIONS
 const app = express();
 const PORT = 3000;
-const DB =
-  "mongodb+srv://abdulhannan:flutteramazon123@cluster0.hu7ex4c.mongodb.net/?retryWrites=true&w=majority";
-
+const username = process.env.MONGO_USERNAME;
+const password = process.env.MONGO_PASSWORD;
+const DB = `mongodb+srv://${username}:${password}@cluster0.hu7ex4c.mongodb.net/?retryWrites=true&w=majority`;
+console.log(username, password);
 // MIDDLEWARES
 app.use(authRouter);
 
