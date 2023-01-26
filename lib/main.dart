@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_e_com/constants/global_variables.dart';
 import 'package:my_e_com/features/auth/screens/auth_screen.dart';
+import 'package:my_e_com/features/auth/services/auth_service.dart';
 import 'package:my_e_com/providers/user_provider.dart';
 import 'package:my_e_com/router.dart';
 import 'package:provider/provider.dart';
@@ -16,8 +17,20 @@ void main() {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final AuthService authService = AuthService();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
