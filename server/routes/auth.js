@@ -2,6 +2,7 @@ const express = require("express");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const auth = require("../middlewares/auth");
 
 const authRouter = express.Router();
 
@@ -71,7 +72,7 @@ authRouter.post("/tokenIsValid", async (req, res) => {
 });
 
 // GET USER DATA ROUTE
-authRouter.get("/", async (req, res) => {
+authRouter.get("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user);
     res.json({ ...user._doc, token: req.token });
