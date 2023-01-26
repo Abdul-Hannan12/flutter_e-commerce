@@ -50,7 +50,7 @@ authRouter.post("/api/signin", async (req, res) => {
 });
 
 // JWT VALIDATION
-authRouter.get("/tokenIsValid", async (req, res) => {
+authRouter.post("/tokenIsValid", async (req, res) => {
   try {
     const token = req.header("x-auth-token");
 

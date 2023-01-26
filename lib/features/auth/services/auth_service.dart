@@ -80,11 +80,19 @@ class AuthService {
         prefs.setString('x-auth-token', '');
       }
 
-      // http.Response res = await http.post(Uri.parse('$uri/api/signup'),
-      //     body: jsonEncode({'email': email, 'password': password}),
-      //     headers: <String, String>{
-      //       'Content-Type': 'application/json; charset=UTF-8'
-      //     });
+      http.Response tokenRes = await http.post(
+        Uri.parse('$uri/tokenIsValid'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': token!
+        },
+      );
+
+      var response = jsonDecode(tokenRes.body);
+
+      if (response == true) {
+        // get user data
+      }
 
       // httpErrorHandle(
       //     response: res,
