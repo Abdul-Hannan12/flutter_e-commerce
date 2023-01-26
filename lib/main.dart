@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:my_e_com/constants/global_variables.dart';
 import 'package:my_e_com/features/auth/screens/auth_screen.dart';
+import 'package:my_e_com/providers/user_provider.dart';
 import 'package:my_e_com/router.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => UserProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
