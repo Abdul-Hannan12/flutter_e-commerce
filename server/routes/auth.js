@@ -14,7 +14,6 @@ authRouter.post("/api/signup", async (req, res) => {
       });
     }
 
-    console.log(req.body);
     const hashedPass = await bcryptjs.hash(password, 8);
 
     let user = new User({
