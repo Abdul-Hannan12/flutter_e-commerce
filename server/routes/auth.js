@@ -49,7 +49,7 @@ authRouter.post("/api/signin", async (req, res) => {
   }
 });
 
-// JWT VALIDATION
+// JWT VALIDATION ROUTE
 authRouter.post("/tokenIsValid", async (req, res) => {
   try {
     const token = req.header("x-auth-token");
@@ -65,6 +65,16 @@ authRouter.post("/tokenIsValid", async (req, res) => {
     if (!user) return res.json(false);
 
     res.json(true);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+// GET USER DATA ROUTE
+authRouter.get("/", async (req, res) => {
+  try {
+    const user = await User.findById(req.user);
+    res.json({ ...user._doc, token: req.token });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
