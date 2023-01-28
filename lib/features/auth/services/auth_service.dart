@@ -3,10 +3,10 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:my_e_com/common/widgets/bottom_bar.dart';
 import 'package:my_e_com/constants/error_handling.dart';
 import 'package:my_e_com/constants/global_variables.dart';
 import 'package:my_e_com/constants/utils.dart';
-import 'package:my_e_com/features/home/screens/home_screen.dart';
 import 'package:my_e_com/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_e_com/providers/user_provider.dart';
@@ -64,7 +64,7 @@ class AuthService {
               jsonDecode(res.body)['token'],
             );
             Navigator.pushNamedAndRemoveUntil(
-                context, HomeScreen.routeName, (route) => false);
+                context, BottomBar.routeName, (route) => false);
           });
     } catch (e) {
       showSnackBar(context, e.toString());

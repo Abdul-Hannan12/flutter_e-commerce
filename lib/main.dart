@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_e_com/common/widgets/bottom_bar.dart';
 import 'package:my_e_com/constants/global_variables.dart';
 import 'package:my_e_com/features/auth/screens/auth_screen.dart';
 import 'package:my_e_com/features/auth/services/auth_service.dart';
-import 'package:my_e_com/features/home/screens/home_screen.dart';
 import 'package:my_e_com/providers/user_provider.dart';
 import 'package:my_e_com/router.dart';
 import 'package:provider/provider.dart';
@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
           )),
       onGenerateRoute: (settings) => generateRoute(settings),
       home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? const HomeScreen()
+          ? const BottomBar()
           : const AuthScreen(),
     );
   }
