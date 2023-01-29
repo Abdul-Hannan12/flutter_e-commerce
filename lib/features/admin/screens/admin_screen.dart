@@ -62,6 +62,7 @@ class _AdminScreenState extends State<AdminScreen> {
           ),
         ),
       ),
+      body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
         selectedItemColor: GlobalVariables.selectedNavBarColor,
