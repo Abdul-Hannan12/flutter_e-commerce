@@ -1,5 +1,7 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:my_e_com/constants/global_variables.dart';
+import 'package:my_e_com/features/home/screens/home_screen.dart';
 
 class BottomBar extends StatefulWidget {
   static const String routeName = '/actual-home';
@@ -10,17 +12,32 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  final int _page = 0;
+  int _page = 0;
   double bottomBarWidth = 42;
   double bottomBarBorderWidth = 5;
+
+  List<Widget> pages = [
+    const HomeScreen(),
+    const Center(child: Text('Account')),
+    const Center(child: Text('Cart'))
+  ];
+
+  void updatePage(int page) {
+    setState(() {
+      _page = page;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
         selectedItemColor: GlobalVariables.selectedNavBarColor,
         unselectedItemColor: GlobalVariables.unselectedNavBarColor,
         backgroundColor: GlobalVariables.backgroundColor,
+        onTap: updatePage,
         iconSize: 28,
         items: [
           BottomNavigationBarItem(
@@ -70,7 +87,12 @@ class _BottomBarState extends State<BottomBar> {
                   ),
                 ),
               ),
-              child: const Icon(Icons.home_outlined),
+              child: Badge(
+                elevation: 0,
+                badgeContent: const Text('2'),
+                badgeColor: Colors.white,
+                child: const Icon(Icons.shopping_cart_outlined),
+              ),
             ),
             label: '',
           ),
