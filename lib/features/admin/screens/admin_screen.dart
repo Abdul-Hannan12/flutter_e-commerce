@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_e_com/features/admin/screens/products_screen.dart';
 
 import '../../../constants/global_variables.dart';
 
 class AdminScreen extends StatefulWidget {
+  static const String routeName = '/admin';
   const AdminScreen({super.key});
 
   @override
@@ -15,7 +17,7 @@ class _AdminScreenState extends State<AdminScreen> {
   double bottomBarBorderWidth = 5;
 
   List<Widget> pages = [
-    const Center(child: Text('Posts')),
+    const ProductsScreen(),
     const Center(child: Text('Analytics')),
     const Center(child: Text('Cart')),
   ];

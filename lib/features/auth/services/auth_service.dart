@@ -7,6 +7,7 @@ import 'package:my_e_com/common/widgets/bottom_bar.dart';
 import 'package:my_e_com/constants/error_handling.dart';
 import 'package:my_e_com/constants/global_variables.dart';
 import 'package:my_e_com/constants/utils.dart';
+import 'package:my_e_com/features/admin/screens/admin_screen.dart';
 import 'package:my_e_com/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_e_com/providers/user_provider.dart';
@@ -58,13 +59,20 @@ class AuthService {
           context: context,
           onSuccess: () async {
             SharedPreferences prefs = await SharedPreferences.getInstance();
-            Provider.of<UserProvider>(context, listen: false).setUser(res.body);
+            final userProvider =
+                Provider.of<UserProvider>(context, listen: false);
+            userProvider.setUser(res.body);
             await prefs.setString(
               'x-auth-token',
               jsonDecode(res.body)['token'],
             );
-            Navigator.pushNamedAndRemoveUntil(
-                context, BottomBar.routeName, (route) => false);
+            if (userProvider.user.type == 'user') {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, BottomBar.routeName, (route) => false);
+            } else {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, AdminScreen.routeName, (route) => false);
+            }
           });
     } catch (e) {
       showSnackBar(context, e.toString());
