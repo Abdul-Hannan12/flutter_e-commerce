@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_e_com/features/home/widgets/address_box.dart';
+import 'package:my_e_com/features/home/widgets/carousel_image.dart';
+import 'package:my_e_com/features/home/widgets/top_categories.dart';
 import 'package:my_e_com/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +18,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -87,6 +88,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: const [
           AddressBox(),
+          SizedBox(height: 10),
+          TopCategories(),
+          SizedBox(height: 10),
+          CarouselImage(),
         ],
       ),
     );
