@@ -9,17 +9,16 @@ class Product {
   final String category;
   final double price;
   final String? id;
-  final String? userId;
 
-  Product(
-      {required this.name,
-      required this.description,
-      required this.quantity,
-      required this.images,
-      required this.category,
-      required this.price,
-      this.id,
-      this.userId});
+  Product({
+    required this.name,
+    required this.description,
+    required this.quantity,
+    required this.images,
+    required this.category,
+    required this.price,
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,7 +29,6 @@ class Product {
       'category': category,
       'price': price,
       'id': id,
-      'userId': userId,
     };
   }
 
@@ -42,7 +40,6 @@ class Product {
       category: map['category'] as String,
       price: map['price'] as double,
       id: map['_id'] != null ? map['_id'] as String : null,
-      userId: map['userId'] != null ? map['userId'] as String : null,
       images: List<String>.from(
         (map['images'] as List<String>),
       ),
