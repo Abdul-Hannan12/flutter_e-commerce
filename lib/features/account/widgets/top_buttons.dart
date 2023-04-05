@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_e_com/features/accout/widgets/account_button.dart';
+import 'package:my_e_com/features/account/widgets/account_button.dart';
 
 class TopButtons extends StatefulWidget {
   const TopButtons({super.key});

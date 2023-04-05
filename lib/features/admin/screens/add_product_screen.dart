@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:my_e_com/common/widgets/custom_button.dart';
 import 'package:my_e_com/common/widgets/custom_textfield.dart';
 import 'package:my_e_com/constants/utils.dart';
+import 'package:my_e_com/features/admin/services/admin_services.dart';
 
 import '../../../constants/global_variables.dart';
 
@@ -35,6 +36,23 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   String category = 'Mobiles';
   List<File> images = [];
+  final _addProductFormKey = GlobalKey<FormState>();
+
+  final adminServices = AdminServices();
+
+  void sellProduct() {
+    if (_addProductFormKey.currentState!.validate() && images.isNotEmpty) {
+      adminServices.sellProduct(
+        context: context,
+        name: productNameController.text,
+        description: productDescriptionController.text,
+        price: double.parse(productPriceController.text),
+        quantity: double.parse(productQuantityController.text),
+        category: category,
+        images: images,
+      );
+    }
+  }
 
   @override
   void dispose() {
@@ -71,6 +89,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _addProductFormKey,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
@@ -169,7 +188,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                CustomButton(text: 'Sell', onTap: () {})
+                CustomButton(
+                  text: 'Sell',
+                  onTap: sellProduct,
+                )
               ],
             ),
           ),

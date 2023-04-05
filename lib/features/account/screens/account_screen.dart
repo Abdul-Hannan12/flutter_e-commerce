@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_e_com/constants/global_variables.dart';
-import 'package:my_e_com/features/accout/widgets/below_app_bar.dart';
-import 'package:my_e_com/features/accout/widgets/orders.dart';
-import 'package:my_e_com/features/accout/widgets/top_buttons.dart';
+import 'package:my_e_com/features/account/widgets/below_app_bar.dart';
+import 'package:my_e_com/features/account/widgets/orders.dart';
+import 'package:my_e_com/features/account/widgets/top_buttons.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});

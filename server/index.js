@@ -5,6 +5,7 @@ require("dotenv").config();
 
 // IMPORTS FROM FILES
 const authRouter = require("./routes/auth");
+const adminRouter = require("./routes/admin");
 
 // INITIALIZATIONS
 const app = express();
@@ -16,6 +17,7 @@ const DB = `mongodb+srv://${username}:${password}@cluster0.hu7ex4c.mongodb.net/?
 // MIDDLEWARES
 app.use(express.json());
 app.use(authRouter);
+app.use(adminRouter);
 
 // CONNECTIONS
 mongoose
